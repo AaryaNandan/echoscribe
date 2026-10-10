@@ -1,0 +1,923 @@
+{
+  "meetings": [
+    {
+      "id": "mtg_seed_01",
+      "title": "Q3 Enterprise Architecture & AI Search Migration Sync",
+      "meetingDate": "2026-10-02",
+      "participants": [
+        "Elena Rostova (Staff Architect)",
+        "Marcus Vance (VP Eng)",
+        "Sarah Lin (Tech Lead)",
+        "Dave Kim (SRE)"
+      ],
+      "transcript": "Marcus: Let's align on the Q3 enterprise search architecture. We evaluated Elasticsearch vs pgvector for our Postgres deployment.\nElena: Based on the 50k QPS load test benchmarks, pgvector meets our latency SLA of <45ms and avoids running an extra cluster. We should standardize on pgvector for primary semantic retrieval.\nMarcus: Approved. Let's make that official. Elena, please draft the Architectural Decision Record by next Friday.\nSarah: I can take the indexing migration script. I will build the background worker to re-embed historical records. I'll need Dave to provision the read-replica database pool first.\nDave: I'll spin up the read-replica database pool in GCP Asia-East1 by Wednesday.\nSarah: Once Dave finishes, I'll have the ingestion worker PR up within 4 days.\nMarcus: Someone also needs to review our vector dimension quotas before we roll out to production.\nElena: Also, don't forget we need to prepare the sales benchmark slide deck for the executive committee.",
+      "status": "processed",
+      "createdAt": "2026-10-02T15:19:31.010Z",
+      "updatedAt": "2026-10-02T15:19:31.010Z"
+    },
+    {
+      "id": "mtg_seed_02",
+      "title": "Customer Success & Renewal Escalation Triage",
+      "meetingDate": "2026-10-04",
+      "participants": [
+        "Rachel Adams (VP CS)",
+        "Carlos Gomez (Enterprise AE)",
+        "Devon Vance (Support Lead)"
+      ],
+      "transcript": "Rachel: Let's discuss Acme Corp's enterprise renewal. They experienced 3 webhook delivery timeouts last week.\nCarlos: They asked for an automated webhook dead-letter queue with retry alerts, otherwise they might stall their $240k expansion.\nRachel: We agreed to waive their annual support overage fee as goodwill while engineering resolves the reliability issue.\nCarlos: I will deliver the amended renewal contract with the fee waiver by Monday morning.\nDevon: I will configure Datadog synthetic monitors on the customer webhook ingest endpoints by tomorrow at 5 PM.\nRachel: We should probably look into whether webhook delivery batching might help our throughput.\nCarlos: Prepare the customer pipeline presentation deck for the QBR.",
+      "status": "processed",
+      "createdAt": "2026-10-04T15:19:31.010Z",
+      "updatedAt": "2026-10-04T15:19:31.010Z"
+    },
+    {
+      "id": "mtg_seed_03",
+      "title": "SOC 2 Type II Compliance & Security Audit Prep",
+      "meetingDate": "2026-10-05",
+      "participants": [
+        "Amara Patel (Head of Infosec)",
+        "Dave Kim (SRE)",
+        "Elena Rostova (Staff Architect)"
+      ],
+      "transcript": "Amara: The SOC 2 audit begins in 14 days. We need all evidence collected and verified in Vanta.\nDecision: All staging and production AWS IAM credentials will be restricted to temporary STS session tokens via Okta SSO.\nAmara: I will export the employee access review log from Okta and upload to Vanta by this Thursday.\nDave: I need to enforce MFA on the emergency root accounts and rotate the KMS master encryption keys. I will finish this by Friday.\nAmara: Someone should verify if contractor laptop encryption policies are being enforced in Jamf.",
+      "status": "processed",
+      "createdAt": "2026-10-05T15:19:31.010Z",
+      "updatedAt": "2026-10-05T15:19:31.010Z"
+    },
+    {
+      "id": "mtg_seed_04",
+      "title": "Forward Deployed Engineering Field Enablement Sprint",
+      "meetingDate": "2026-10-06",
+      "participants": [
+        "Liam Taylor (Lead FDE)",
+        "Zoe Chen (Product Manager)",
+        "Sarah Lin (Tech Lead)"
+      ],
+      "transcript": "Liam: For our enterprise pilot customers, we need a standardized meeting action item extraction pipeline that converts messy transcripts into structured tasks.\nZoe: Let's approve the standardized JSON schema with confidence scores and duplicate detection.\nLiam: I will publish the SDK client and TypeScript validation definitions by tomorrow afternoon.\nSarah: I will integrate the Gemini 3.8 Flash extraction endpoint with our backend audit logging table by Friday.\nZoe: Could someone explore automated Jira or Linear task syncing next sprint?",
+      "status": "processed",
+      "createdAt": "2026-10-06T15:19:31.010Z",
+      "updatedAt": "2026-10-06T15:19:31.010Z"
+    },
+    {
+      "id": "mtg_seed_05",
+      "title": "Q4 GTM Pipeline & Sales Enablement Standup",
+      "meetingDate": "2026-10-07",
+      "participants": [
+        "Carlos Gomez (Enterprise AE)",
+        "Marcus Vance (VP Eng)",
+        "Zoe Chen (Product Manager)"
+      ],
+      "transcript": "Carlos: Quick update on European partner channels. We need sales enablement collateral on our AI extraction capabilities.\nMarcus: Zoe and Carlos, please coordinate on the collateral one-pager. Carlos will write the enterprise case study by next Tuesday.\nZoe: I will produce the technical architecture diagram and API spec sheet by Monday.\nCarlos: Also, create the monthly sales report slide deck for Marcus.",
+      "status": "processed",
+      "createdAt": "2026-10-07T15:19:31.010Z",
+      "updatedAt": "2026-10-07T15:19:31.010Z"
+    },
+    {
+      "id": "mtg_1791473472085_ts6hb",
+      "title": "Weekly Product Meeting",
+      "meetingDate": "2026-10-08",
+      "participants": [
+        "Priya Patel"
+      ],
+      "transcript": "\"Ahmed will prepare the monthly sales report by October 15. Sara will review the report. The team decided to launch the new dashboard next Monday.\"",
+      "status": "processed",
+      "createdAt": "2026-10-08T15:31:12.085Z",
+      "updatedAt": "2026-10-08T15:31:27.098Z"
+    },
+    {
+      "id": "mtg_1791474810543_1qj8e",
+      "title": "Automated Test Meeting",
+      "meetingDate": "2026-10-10",
+      "participants": [
+        "Tester One",
+        "Tester Two"
+      ],
+      "transcript": "Tester One: I will complete the unit tests by Friday.",
+      "status": "processed",
+      "createdAt": "2026-10-08T15:53:30.542Z",
+      "updatedAt": "2026-10-08T15:53:30.545Z"
+    },
+    {
+      "id": "mtg_1791543671625_t50xj",
+      "title": "Automated Test Meeting",
+      "meetingDate": "2026-10-10",
+      "participants": [
+        "Tester One",
+        "Tester Two"
+      ],
+      "transcript": "Tester One: I will complete the unit tests by Friday.",
+      "status": "processed",
+      "createdAt": "2026-10-09T11:01:11.625Z",
+      "updatedAt": "2026-10-09T11:01:11.627Z"
+    },
+    {
+      "id": "mtg_1791551649746_o8jwy",
+      "title": "Automated Test Meeting",
+      "meetingDate": "2026-10-10",
+      "participants": [
+        "Tester One",
+        "Tester Two"
+      ],
+      "transcript": "Tester One: I will complete the unit tests by Friday.",
+      "status": "processed",
+      "createdAt": "2026-10-09T13:14:09.745Z",
+      "updatedAt": "2026-10-09T13:14:09.748Z"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "dec_seed_01",
+      "meetingId": "mtg_seed_01",
+      "decision": "Standardize on PostgreSQL pgvector for enterprise semantic search instead of managing Elasticsearch cluster.",
+      "confidence": 0.98,
+      "evidence": "pgvector meets our latency SLA of <45ms and avoids running an extra cluster. We should standardize on pgvector for primary semantic retrieval.",
+      "createdAt": "2026-10-02"
+    },
+    {
+      "id": "dec_seed_02",
+      "meetingId": "mtg_seed_02",
+      "decision": "Waive Acme Corp annual enterprise support overage fee as goodwill gesture during webhook stabilization.",
+      "confidence": 0.95,
+      "evidence": "We agreed to waive their annual support overage fee as goodwill while engineering resolves the reliability issue.",
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "dec_seed_03",
+      "meetingId": "mtg_seed_03",
+      "decision": "Enforce temporary STS session tokens via Okta SSO across all AWS staging and production environments.",
+      "confidence": 0.99,
+      "evidence": "Decision: All staging and production AWS IAM credentials will be restricted to temporary STS session tokens via Okta SSO.",
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": "dec_seed_04",
+      "meetingId": "mtg_seed_04",
+      "decision": "Approve standardized meeting extraction schema incorporating confidence scores and duplicate detection.",
+      "confidence": 0.97,
+      "evidence": "Let's approve the standardized JSON schema with confidence scores and duplicate detection.",
+      "createdAt": "2026-10-06"
+    },
+    {
+      "id": "dec_seed_05",
+      "meetingId": "mtg_seed_05",
+      "decision": "Prioritize production of enterprise sales collateral showcasing AI action item extraction workflows.",
+      "confidence": 0.94,
+      "evidence": "We need sales enablement collateral on our AI extraction capabilities... coordinate on the collateral one-pager.",
+      "createdAt": "2026-10-07"
+    }
+  ],
+  "actionItems": [
+    {
+      "id": "act_seed_01_1",
+      "meetingId": "mtg_seed_01",
+      "action": "Draft Architectural Decision Record (ADR) for pgvector standardization",
+      "owner": "Elena Rostova",
+      "dueDate": "2026-10-11",
+      "confidence": 0.96,
+      "evidence": "Elena, please draft the Architectural Decision Record by next Friday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-03"
+    },
+    {
+      "id": "act_seed_01_2",
+      "meetingId": "mtg_seed_01",
+      "action": "Provision read-replica database pool in GCP Asia-East1",
+      "owner": "Dave Kim",
+      "dueDate": "2026-10-09",
+      "confidence": 0.94,
+      "evidence": "I'll spin up the read-replica database pool in GCP Asia-East1 by Wednesday.",
+      "status": "completed",
+      "needsReview": false,
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-06"
+    },
+    {
+      "id": "act_seed_01_3",
+      "meetingId": "mtg_seed_01",
+      "action": "Build background worker migration script to re-embed historical records",
+      "owner": "Sarah Lin",
+      "dueDate": "2026-10-13",
+      "confidence": 0.88,
+      "evidence": "I will build the background worker to re-embed historical records... within 4 days.",
+      "status": "pending",
+      "needsReview": false,
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-02"
+    },
+    {
+      "id": "act_seed_01_4",
+      "meetingId": "mtg_seed_01",
+      "action": "Review vector dimension quotas and memory sizing before rollout",
+      "owner": null,
+      "dueDate": null,
+      "confidence": 0.62,
+      "evidence": "Someone also needs to review our vector dimension quotas before we roll out to production.",
+      "status": "pending",
+      "needsReview": true,
+      "reviewReason": "Low confidence (62%), Owner missing, Due date missing",
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-02"
+    },
+    {
+      "id": "act_seed_01_5",
+      "meetingId": "mtg_seed_01",
+      "action": "Prepare the sales benchmark slide deck for executive committee",
+      "owner": "Elena Rostova",
+      "dueDate": "2026-10-15",
+      "confidence": 0.85,
+      "evidence": "Also, don't forget we need to prepare the sales benchmark slide deck for the executive committee.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-02",
+      "updatedAt": "2026-10-03"
+    },
+    {
+      "id": "act_seed_02_1",
+      "meetingId": "mtg_seed_02",
+      "action": "Deliver amended Acme Corp enterprise renewal contract with support waiver",
+      "owner": "Carlos Gomez",
+      "dueDate": "2026-10-07",
+      "confidence": 0.95,
+      "evidence": "I will deliver the amended renewal contract with the fee waiver by Monday morning.",
+      "status": "pending",
+      "needsReview": false,
+      "createdAt": "2026-10-04",
+      "updatedAt": "2026-10-04"
+    },
+    {
+      "id": "act_seed_02_2",
+      "meetingId": "mtg_seed_02",
+      "action": "Configure Datadog synthetic monitors on customer webhook ingest endpoints",
+      "owner": "Devon Vance",
+      "dueDate": "2026-10-05",
+      "confidence": 0.92,
+      "evidence": "I will configure Datadog synthetic monitors on the customer webhook ingest endpoints by tomorrow at 5 PM.",
+      "status": "completed",
+      "needsReview": false,
+      "createdAt": "2026-10-04",
+      "updatedAt": "2026-10-05"
+    },
+    {
+      "id": "act_seed_02_3",
+      "meetingId": "mtg_seed_02",
+      "action": "Investigate whether webhook delivery batching might improve ingest throughput",
+      "owner": null,
+      "dueDate": null,
+      "confidence": 0.65,
+      "evidence": "We should probably look into whether webhook delivery batching might help our throughput.",
+      "status": "pending",
+      "needsReview": true,
+      "reviewReason": "Low confidence (65%), Owner missing, Due date missing",
+      "createdAt": "2026-10-04",
+      "updatedAt": "2026-10-04"
+    },
+    {
+      "id": "act_seed_02_4",
+      "meetingId": "mtg_seed_02",
+      "action": "Prepare the customer pipeline presentation deck for quarterly review",
+      "owner": "Carlos Gomez",
+      "dueDate": "2026-10-14",
+      "confidence": 0.82,
+      "evidence": "Prepare the customer pipeline presentation deck for the QBR.",
+      "status": "pending",
+      "needsReview": true,
+      "isDuplicate": true,
+      "duplicateOfId": "act_seed_01_5",
+      "reviewReason": "Possible duplicate action",
+      "createdAt": "2026-10-04",
+      "updatedAt": "2026-10-04"
+    },
+    {
+      "id": "act_seed_03_1",
+      "meetingId": "mtg_seed_03",
+      "action": "Export employee access review log from Okta and upload to Vanta",
+      "owner": "Amara Patel",
+      "dueDate": "2026-10-10",
+      "confidence": 0.95,
+      "evidence": "I will export the employee access review log from Okta and upload to Vanta by this Thursday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-05",
+      "updatedAt": "2026-10-06"
+    },
+    {
+      "id": "act_seed_03_2",
+      "meetingId": "mtg_seed_03",
+      "action": "Enforce MFA on emergency root accounts and rotate KMS master keys",
+      "owner": "Dave Kim",
+      "dueDate": "2026-10-11",
+      "confidence": 0.94,
+      "evidence": "I need to enforce MFA on the emergency root accounts and rotate the KMS master encryption keys. I will finish this by Friday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-05",
+      "updatedAt": "2026-10-05"
+    },
+    {
+      "id": "act_seed_03_3",
+      "meetingId": "mtg_seed_03",
+      "action": "Verify contractor laptop encryption policies compliance in Jamf MDM",
+      "owner": null,
+      "dueDate": null,
+      "confidence": 0.68,
+      "evidence": "Someone should verify if contractor laptop encryption policies are being enforced in Jamf.",
+      "status": "pending",
+      "needsReview": true,
+      "reviewReason": "Low confidence (68%), Owner missing, Due date missing",
+      "createdAt": "2026-10-05",
+      "updatedAt": "2026-10-05"
+    },
+    {
+      "id": "act_seed_04_1",
+      "meetingId": "mtg_seed_04",
+      "action": "Publish SDK client and TypeScript validation definitions",
+      "owner": "Liam Taylor",
+      "dueDate": "2026-10-07",
+      "confidence": 0.96,
+      "evidence": "I will publish the SDK client and TypeScript validation definitions by tomorrow afternoon.",
+      "status": "completed",
+      "needsReview": false,
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-07"
+    },
+    {
+      "id": "act_seed_04_2",
+      "meetingId": "mtg_seed_04",
+      "action": "Integrate Gemini 3.8 Flash extraction service with backend audit logging table",
+      "owner": "Sarah Lin",
+      "dueDate": "2026-10-12",
+      "confidence": 0.93,
+      "evidence": "I will integrate the Gemini 3.8 Flash extraction endpoint with our backend audit logging table by Friday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-06"
+    },
+    {
+      "id": "act_seed_04_3",
+      "meetingId": "mtg_seed_04",
+      "action": "Research automated Jira and Linear issue tracker synchronization",
+      "owner": null,
+      "dueDate": null,
+      "confidence": 0.58,
+      "evidence": "Could someone explore automated Jira or Linear task syncing next sprint?",
+      "status": "pending",
+      "needsReview": true,
+      "reviewReason": "Low confidence (58%), Owner missing, Due date missing",
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-10-06"
+    },
+    {
+      "id": "act_seed_05_1",
+      "meetingId": "mtg_seed_05",
+      "action": "Write enterprise case study on automated workflow time savings",
+      "owner": "Carlos Gomez",
+      "dueDate": "2026-10-13",
+      "confidence": 0.94,
+      "evidence": "Carlos will write the enterprise case study by next Tuesday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-07",
+      "updatedAt": "2026-10-07"
+    },
+    {
+      "id": "act_seed_05_2",
+      "meetingId": "mtg_seed_05",
+      "action": "Produce technical architecture diagram and API spec sheet for partner portal",
+      "owner": "Zoe Chen",
+      "dueDate": "2026-10-12",
+      "confidence": 0.91,
+      "evidence": "I will produce the technical architecture diagram and API spec sheet by Monday.",
+      "status": "approved",
+      "needsReview": false,
+      "createdAt": "2026-10-07",
+      "updatedAt": "2026-10-07"
+    },
+    {
+      "id": "act_seed_05_3",
+      "meetingId": "mtg_seed_05",
+      "action": "Prepare the monthly sales report slide deck",
+      "owner": "Carlos Gomez",
+      "dueDate": "2026-10-15",
+      "confidence": 0.88,
+      "evidence": "Also, create the monthly sales report slide deck for Marcus.",
+      "status": "pending",
+      "needsReview": true,
+      "isDuplicate": true,
+      "duplicateOfId": "act_seed_01_5",
+      "reviewReason": "Possible duplicate action",
+      "createdAt": "2026-10-07",
+      "updatedAt": "2026-10-07"
+    },
+    {
+      "id": "act_1791473487098_0_1qp3",
+      "meetingId": "mtg_1791473472085_ts6hb",
+      "action": "\"Ahmed will prepare the monthly sales report by October 15. Sara will review the report. The team decided to launch the new dashboard next Monday.\"",
+      "owner": null,
+      "dueDate": null,
+      "confidence": 0.62,
+      "evidence": "\"Ahmed will prepare the monthly sales report by October 15. Sara will review the report. The team decided to launch the new dashboard next Monday.\"",
+      "status": "pending",
+      "needsReview": true,
+      "reviewReason": "Low confidence (62%), Owner missing, Due date missing",
+      "isDuplicate": false,
+      "duplicateOfId": null,
+      "createdAt": "2026-10-08T15:31:27.098Z",
+      "updatedAt": "2026-10-08T15:31:27.098Z"
+    },
+    {
+      "id": "act_1791474810546_0_zygh",
+      "meetingId": "mtg_1791474810543_1qj8e",
+      "action": "Complete the unit tests",
+      "owner": "Tester One",
+      "dueDate": "2026-10-15",
+      "confidence": 0.95,
+      "evidence": "I will complete the unit tests by Friday.",
+      "status": "completed",
+      "needsReview": false,
+      "isDuplicate": false,
+      "duplicateOfId": null,
+      "createdAt": "2026-10-08T15:53:30.545Z",
+      "updatedAt": "2026-10-08T15:53:30.552Z"
+    },
+    {
+      "id": "act_1791543671628_0_vr8h",
+      "meetingId": "mtg_1791543671625_t50xj",
+      "action": "Complete the unit tests",
+      "owner": "Tester One",
+      "dueDate": "2026-10-15",
+      "confidence": 0.95,
+      "evidence": "I will complete the unit tests by Friday.",
+      "status": "completed",
+      "needsReview": false,
+      "reviewReason": "Possible duplicate action",
+      "isDuplicate": true,
+      "duplicateOfId": "act_1791474810546_0_zygh",
+      "createdAt": "2026-10-09T11:01:11.627Z",
+      "updatedAt": "2026-10-09T11:01:11.632Z"
+    },
+    {
+      "id": "act_1791551649748_0_qn5y",
+      "meetingId": "mtg_1791551649746_o8jwy",
+      "action": "Complete the unit tests",
+      "owner": "Tester One",
+      "dueDate": "2026-10-15",
+      "confidence": 0.95,
+      "evidence": "I will complete the unit tests by Friday.",
+      "status": "completed",
+      "needsReview": false,
+      "reviewReason": "Possible duplicate action",
+      "isDuplicate": true,
+      "duplicateOfId": "act_1791474810546_0_zygh",
+      "createdAt": "2026-10-09T13:14:09.748Z",
+      "updatedAt": "2026-10-09T13:14:09.754Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1791551649755_x1tg",
+      "meetingId": null,
+      "actionItemId": null,
+      "event": "item_completed",
+      "oldValue": null,
+      "newValue": {
+        "testKey": "testVal"
+      },
+      "createdAt": "2026-10-09T13:14:09.755Z"
+    },
+    {
+      "id": "aud_1791551649754_tqmc",
+      "meetingId": "mtg_1791551649746_o8jwy",
+      "actionItemId": "act_1791551649748_0_qn5y",
+      "event": "item_completed",
+      "oldValue": {
+        "id": "act_1791551649748_0_qn5y",
+        "meetingId": "mtg_1791551649746_o8jwy",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T13:14:09.748Z",
+        "updatedAt": "2026-10-09T13:14:09.750Z"
+      },
+      "newValue": {
+        "id": "act_1791551649748_0_qn5y",
+        "meetingId": "mtg_1791551649746_o8jwy",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "completed",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T13:14:09.748Z",
+        "updatedAt": "2026-10-09T13:14:09.754Z"
+      },
+      "createdAt": "2026-10-09T13:14:09.754Z"
+    },
+    {
+      "id": "aud_1791551649750_3m7n",
+      "meetingId": "mtg_1791551649746_o8jwy",
+      "actionItemId": "act_1791551649748_0_qn5y",
+      "event": "item_approved",
+      "oldValue": {
+        "id": "act_1791551649748_0_qn5y",
+        "meetingId": "mtg_1791551649746_o8jwy",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "pending",
+        "needsReview": true,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T13:14:09.748Z",
+        "updatedAt": "2026-10-09T13:14:09.748Z"
+      },
+      "newValue": {
+        "id": "act_1791551649748_0_qn5y",
+        "meetingId": "mtg_1791551649746_o8jwy",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T13:14:09.748Z",
+        "updatedAt": "2026-10-09T13:14:09.750Z"
+      },
+      "createdAt": "2026-10-09T13:14:09.750Z"
+    },
+    {
+      "id": "aud_1791551649748_fx99",
+      "meetingId": "mtg_1791551649746_o8jwy",
+      "actionItemId": "act_1791551649748_0_qn5y",
+      "event": "item_created",
+      "oldValue": null,
+      "newValue": {
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "confidence": 0.95
+      },
+      "createdAt": "2026-10-09T13:14:09.748Z"
+    },
+    {
+      "id": "aud_1791551649746_i6e8",
+      "meetingId": "mtg_1791551649746_o8jwy",
+      "actionItemId": null,
+      "event": "meeting_created",
+      "oldValue": null,
+      "newValue": {
+        "title": "Automated Test Meeting",
+        "date": "2026-10-10"
+      },
+      "createdAt": "2026-10-09T13:14:09.746Z"
+    },
+    {
+      "id": "aud_1791543671633_nt30",
+      "meetingId": null,
+      "actionItemId": null,
+      "event": "item_completed",
+      "oldValue": null,
+      "newValue": {
+        "testKey": "testVal"
+      },
+      "createdAt": "2026-10-09T11:01:11.633Z"
+    },
+    {
+      "id": "aud_1791543671632_4dtm",
+      "meetingId": "mtg_1791543671625_t50xj",
+      "actionItemId": "act_1791543671628_0_vr8h",
+      "event": "item_completed",
+      "oldValue": {
+        "id": "act_1791543671628_0_vr8h",
+        "meetingId": "mtg_1791543671625_t50xj",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T11:01:11.627Z",
+        "updatedAt": "2026-10-09T11:01:11.629Z"
+      },
+      "newValue": {
+        "id": "act_1791543671628_0_vr8h",
+        "meetingId": "mtg_1791543671625_t50xj",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "completed",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T11:01:11.627Z",
+        "updatedAt": "2026-10-09T11:01:11.632Z"
+      },
+      "createdAt": "2026-10-09T11:01:11.632Z"
+    },
+    {
+      "id": "aud_1791543671629_7hpe",
+      "meetingId": "mtg_1791543671625_t50xj",
+      "actionItemId": "act_1791543671628_0_vr8h",
+      "event": "item_approved",
+      "oldValue": {
+        "id": "act_1791543671628_0_vr8h",
+        "meetingId": "mtg_1791543671625_t50xj",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "pending",
+        "needsReview": true,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T11:01:11.627Z",
+        "updatedAt": "2026-10-09T11:01:11.627Z"
+      },
+      "newValue": {
+        "id": "act_1791543671628_0_vr8h",
+        "meetingId": "mtg_1791543671625_t50xj",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "reviewReason": "Possible duplicate action",
+        "isDuplicate": true,
+        "duplicateOfId": "act_1791474810546_0_zygh",
+        "createdAt": "2026-10-09T11:01:11.627Z",
+        "updatedAt": "2026-10-09T11:01:11.629Z"
+      },
+      "createdAt": "2026-10-09T11:01:11.629Z"
+    },
+    {
+      "id": "aud_1791543671628_unwh",
+      "meetingId": "mtg_1791543671625_t50xj",
+      "actionItemId": "act_1791543671628_0_vr8h",
+      "event": "item_created",
+      "oldValue": null,
+      "newValue": {
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "confidence": 0.95
+      },
+      "createdAt": "2026-10-09T11:01:11.628Z"
+    },
+    {
+      "id": "aud_1791543671626_t9g4",
+      "meetingId": "mtg_1791543671625_t50xj",
+      "actionItemId": null,
+      "event": "meeting_created",
+      "oldValue": null,
+      "newValue": {
+        "title": "Automated Test Meeting",
+        "date": "2026-10-10"
+      },
+      "createdAt": "2026-10-09T11:01:11.626Z"
+    },
+    {
+      "id": "aud_1791474810554_37c3",
+      "meetingId": null,
+      "actionItemId": null,
+      "event": "item_completed",
+      "oldValue": null,
+      "newValue": {
+        "testKey": "testVal"
+      },
+      "createdAt": "2026-10-08T15:53:30.554Z"
+    },
+    {
+      "id": "aud_1791474810552_urdj",
+      "meetingId": "mtg_1791474810543_1qj8e",
+      "actionItemId": "act_1791474810546_0_zygh",
+      "event": "item_completed",
+      "oldValue": {
+        "id": "act_1791474810546_0_zygh",
+        "meetingId": "mtg_1791474810543_1qj8e",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "isDuplicate": false,
+        "duplicateOfId": null,
+        "createdAt": "2026-10-08T15:53:30.545Z",
+        "updatedAt": "2026-10-08T15:53:30.547Z"
+      },
+      "newValue": {
+        "id": "act_1791474810546_0_zygh",
+        "meetingId": "mtg_1791474810543_1qj8e",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "completed",
+        "needsReview": false,
+        "isDuplicate": false,
+        "duplicateOfId": null,
+        "createdAt": "2026-10-08T15:53:30.545Z",
+        "updatedAt": "2026-10-08T15:53:30.552Z"
+      },
+      "createdAt": "2026-10-08T15:53:30.552Z"
+    },
+    {
+      "id": "aud_1791474810547_ts7a",
+      "meetingId": "mtg_1791474810543_1qj8e",
+      "actionItemId": "act_1791474810546_0_zygh",
+      "event": "item_approved",
+      "oldValue": {
+        "id": "act_1791474810546_0_zygh",
+        "meetingId": "mtg_1791474810543_1qj8e",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "pending",
+        "needsReview": false,
+        "isDuplicate": false,
+        "duplicateOfId": null,
+        "createdAt": "2026-10-08T15:53:30.545Z",
+        "updatedAt": "2026-10-08T15:53:30.545Z"
+      },
+      "newValue": {
+        "id": "act_1791474810546_0_zygh",
+        "meetingId": "mtg_1791474810543_1qj8e",
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "dueDate": "2026-10-15",
+        "confidence": 0.95,
+        "evidence": "I will complete the unit tests by Friday.",
+        "status": "approved",
+        "needsReview": false,
+        "isDuplicate": false,
+        "duplicateOfId": null,
+        "createdAt": "2026-10-08T15:53:30.545Z",
+        "updatedAt": "2026-10-08T15:53:30.547Z"
+      },
+      "createdAt": "2026-10-08T15:53:30.547Z"
+    },
+    {
+      "id": "aud_1791474810546_7kur",
+      "meetingId": "mtg_1791474810543_1qj8e",
+      "actionItemId": "act_1791474810546_0_zygh",
+      "event": "item_created",
+      "oldValue": null,
+      "newValue": {
+        "action": "Complete the unit tests",
+        "owner": "Tester One",
+        "confidence": 0.95
+      },
+      "createdAt": "2026-10-08T15:53:30.546Z"
+    },
+    {
+      "id": "aud_1791474810543_1lsv",
+      "meetingId": "mtg_1791474810543_1qj8e",
+      "actionItemId": null,
+      "event": "meeting_created",
+      "oldValue": null,
+      "newValue": {
+        "title": "Automated Test Meeting",
+        "date": "2026-10-10"
+      },
+      "createdAt": "2026-10-08T15:53:30.543Z"
+    },
+    {
+      "id": "aud_1791473487099_tq9a",
+      "meetingId": "mtg_1791473472085_ts6hb",
+      "actionItemId": null,
+      "event": "extraction_completed",
+      "oldValue": null,
+      "newValue": {
+        "decisionsExtracted": 0,
+        "actionItemsExtracted": 1,
+        "processingTimeMs": 14103,
+        "modelUsed": "heuristic-nlp-engine"
+      },
+      "createdAt": "2026-10-08T15:31:27.099Z"
+    },
+    {
+      "id": "aud_1791473487099_d6uk",
+      "meetingId": "mtg_1791473472085_ts6hb",
+      "actionItemId": "act_1791473487098_0_1qp3",
+      "event": "item_created",
+      "oldValue": null,
+      "newValue": {
+        "action": "\"Ahmed will prepare the monthly sales report by October 15. Sara will review the report. The team decided to launch the new dashboard next Monday.\"",
+        "owner": null,
+        "confidence": 0.62
+      },
+      "createdAt": "2026-10-08T15:31:27.099Z"
+    },
+    {
+      "id": "aud_1791473472994_h78r",
+      "meetingId": "mtg_1791473472085_ts6hb",
+      "actionItemId": null,
+      "event": "extraction_started",
+      "oldValue": null,
+      "newValue": {
+        "title": "Weekly Product Meeting"
+      },
+      "createdAt": "2026-10-08T15:31:12.994Z"
+    },
+    {
+      "id": "aud_1791473472085_217u",
+      "meetingId": "mtg_1791473472085_ts6hb",
+      "actionItemId": null,
+      "event": "meeting_created",
+      "oldValue": null,
+      "newValue": {
+        "title": "Weekly Product Meeting",
+        "date": "2026-10-08"
+      },
+      "createdAt": "2026-10-08T15:31:12.085Z"
+    },
+    {
+      "id": "aud_seed_01",
+      "meetingId": "mtg_seed_01",
+      "event": "extraction_completed",
+      "newValue": {
+        "decisionsCount": 1,
+        "actionItemsCount": 5
+      },
+      "createdAt": "2026-10-02"
+    },
+    {
+      "id": "aud_seed_02",
+      "meetingId": "mtg_seed_01",
+      "actionItemId": "act_seed_01_1",
+      "event": "item_approved",
+      "newValue": {
+        "status": "approved"
+      },
+      "createdAt": "2026-10-03"
+    },
+    {
+      "id": "aud_seed_03",
+      "meetingId": "mtg_seed_01",
+      "actionItemId": "act_seed_01_2",
+      "event": "item_completed",
+      "newValue": {
+        "status": "completed"
+      },
+      "createdAt": "2026-10-06"
+    },
+    {
+      "id": "aud_seed_04",
+      "meetingId": "mtg_seed_02",
+      "event": "extraction_completed",
+      "newValue": {
+        "decisionsCount": 1,
+        "actionItemsCount": 4
+      },
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "aud_seed_05",
+      "meetingId": "mtg_seed_03",
+      "actionItemId": "act_seed_03_1",
+      "event": "item_approved",
+      "newValue": {
+        "status": "approved"
+      },
+      "createdAt": "2026-10-06"
+    }
+  ],
+  "settings": {
+    "manualMinutesPerMeeting": 10,
+    "automatedMinutesPerMeeting": 2,
+    "confidenceThreshold": 0.7,
+    "aiModel": "gemini-3.8-flash"
+  }
+}

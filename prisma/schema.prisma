@@ -1,0 +1,113 @@
+// Prisma Schema for Meeting Action Item Tracker
+// Production PostgreSQL-compatible architecture
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum ActionItemStatus {
+  pending
+  approved
+  rejected
+  completed
+}
+
+enum MeetingStatus {
+  draft
+  processed
+  reviewed
+}
+
+model Meeting {
+  id           String        @id @default(uuid())
+  title        String
+  meetingDate  DateTime
+  participants String[]      // Array of participant strings or JSON
+  transcript   String        @db.Text
+  status       MeetingStatus @default(draft)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  decisions    Decision[]
+  actionItems  ActionItem[]
+  auditLogs    AuditLog[]
+
+  @@index([meetingDate])
+  @@index([status])
+  @@map("meetings")
+}
+
+model Decision {
+  id         String   @id @default(uuid())
+  meetingId  String
+  decision   String   @db.Text
+  confidence Float
+  evidence   String?  @db.Text
+  createdAt  DateTime @default(now())
+
+  meeting    Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+
+  @@index([meetingId])
+  @@map("decisions")
+}
+
+model ActionItem {
+  id            String           @id @default(uuid())
+  meetingId     String
+  action        String           @db.Text
+  owner         String?
+  dueDate       DateTime?
+  confidence    Float
+  evidence      String?          @db.Text
+  status        ActionItemStatus @default(pending)
+  needsReview   Boolean          @default(false)
+  reviewReason  String?
+  isDuplicate   Boolean          @default(false)
+  duplicateOfId String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  meeting       Meeting          @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+  auditLogs     AuditLog[]
+
+  @@index([meetingId])
+  @@index([status])
+  @@index([needsReview])
+  @@index([owner])
+  @@index([dueDate])
+  @@map("action_items")
+}
+
+model AuditLog {
+  id           String      @id @default(uuid())
+  meetingId    String?
+  actionItemId String?
+  event        String
+  oldValue     Json?
+  newValue     Json?
+  createdAt    DateTime    @default(now())
+
+  meeting      Meeting?    @relation(fields: [meetingId], references: [id], onDelete: SetNull)
+  actionItem   ActionItem? @relation(fields: [actionItemId], references: [id], onDelete: SetNull)
+
+  @@index([meetingId])
+  @@index([actionItemId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model SystemSettings {
+  id                          String   @id @default("singleton")
+  manualMinutesPerMeeting     Float    @default(10)
+  automatedMinutesPerMeeting  Float    @default(2)
+  confidenceThreshold         Float    @default(0.70)
+  aiModel                     String   @default("gemini-3.8-flash")
+  updatedAt                   DateTime @updatedAt
+
+  @@map("system_settings")
+}
