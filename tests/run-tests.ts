@@ -1,17 +1,18 @@
 /**
- * Production Test Suite for Meeting Action Item Tracker
- * Covers all requirements: Happy path, validation, AI response parsing,
- * missing owner/deadline, low confidence review flagging, duplicate detection,
- * mutations, completions, and exports.
+ * Production Test Suite for Meeting Action Item Tracker (Frontend Architecture)
+ * Covers: Input validation, AI response parsing, NLP heuristic extraction,
+ * missing owner/deadline detection, low confidence review flagging,
+ * text similarity duplicate detection, and settings validation.
  */
 
 import assert from 'assert';
-import { Database, calculateTextSimilarity } from '../src/server/db/database.ts';
-import { MeetingExtractorService } from '../src/server/ai/meeting-extractor.ts';
+import { calculateTextSimilarity } from '../src/lib/duplicate-detector.ts';
+import { MeetingExtractorService } from '../src/lib/ai/meeting-extractor.ts';
 import {
   createMeetingSchema,
   updateActionItemSchema,
   aiExtractionResponseSchema,
+  settingsSchema,
 } from '../src/lib/validation.ts';
 
 let passed = 0;
@@ -46,10 +47,11 @@ async function runAllTests() {
     };
     const parsed = createMeetingSchema.parse(valid);
     assert.strictEqual(parsed.title, valid.title);
+    assert.strictEqual(parsed.participants.length, 2);
   });
 
   // Test 2: Validation - Empty / Invalid Input
-  await test('Validation: Empty meeting title and transcript fail validation', () => {
+  await test('Validation: Empty meeting title and short transcript fail validation', () => {
     assert.throws(
       () => {
         createMeetingSchema.parse({
@@ -83,25 +85,26 @@ async function runAllTests() {
     const rawAiOutput = {
       decisions: [
         {
-          decision: 'Deploy to Cloud Run',
+          decision: 'Standardize on Supabase PostgreSQL database',
           confidence: 0.95,
-          evidence: 'Let us deploy to Cloud Run.',
+          evidence: 'Let us standardize on Supabase PostgreSQL.',
         },
       ],
       action_items: [
         {
-          action: 'Configure Terraform manifests',
-          owner: 'David',
+          action: 'Configure Supabase tables and RLS policies',
+          owner: 'David Kim',
           due_date: '2026-10-20',
           confidence: 0.92,
-          evidence: 'David will configure Terraform manifests by Oct 20.',
+          evidence: 'David will configure Supabase tables and RLS policies by Oct 20.',
           needs_review: false,
         },
       ],
     };
     const validated = aiExtractionResponseSchema.parse(rawAiOutput);
     assert.strictEqual(validated.decisions.length, 1);
-    assert.strictEqual(validated.action_items[0].owner, 'David');
+    assert.strictEqual(validated.action_items[0].owner, 'David Kim');
+    assert.strictEqual(validated.action_items[0].confidence, 0.92);
   });
 
   // Test 5: Missing Owner Handling
@@ -164,71 +167,30 @@ async function runAllTests() {
     assert(similarity < 0.3, `Expected similarity < 0.3, got ${similarity}`);
   });
 
-  // Test 10: Database CRUD & Foreign Keys
-  await test('Database: Create meeting, save action items, update status', () => {
-    const testDb = new Database();
-    const meeting = testDb.createMeeting({
-      title: 'Automated Test Meeting',
-      meetingDate: '2026-10-10',
-      participants: ['Tester One', 'Tester Two'],
-      transcript: 'Tester One: I will complete the unit tests by Friday.',
-    });
-    assert(meeting.id.startsWith('mtg_'));
-
-    const savedActions = testDb.saveActionItems(meeting.id, [
-      {
-        action: 'Complete the unit tests',
-        owner: 'Tester One',
-        dueDate: '2026-10-15',
-        confidence: 0.95,
-        evidence: 'I will complete the unit tests by Friday.',
-      },
-    ]);
-    assert.strictEqual(savedActions.length, 1);
-    assert.strictEqual(savedActions[0].status, 'pending');
-
-    // Action item update
-    const updated = testDb.updateActionItem(savedActions[0].id, {
-      status: 'approved',
-    });
-    assert.strictEqual(updated?.status, 'approved');
-    assert.strictEqual(updated?.needsReview, false);
+  // Test 10: Action Item Update Validation
+  await test('Action Item Update: Validates partial updates', () => {
+    const validUpdate = {
+      status: 'approved' as const,
+      needsReview: false,
+      owner: 'Elena Rostova',
+      dueDate: '2026-10-25',
+    };
+    const parsed = updateActionItemSchema.parse(validUpdate);
+    assert.strictEqual(parsed.status, 'approved');
+    assert.strictEqual(parsed.owner, 'Elena Rostova');
   });
 
-  // Test 11: Action Item Completion
-  await test('Database: Mark action item as completed', () => {
-    const testDb = new Database();
-    const items = testDb.getActionItems();
-    assert(items.length > 0);
-    const firstItem = items[0];
-    const completed = testDb.updateActionItem(firstItem.id, {
-      status: 'completed',
-    });
-    assert.strictEqual(completed?.status, 'completed');
-  });
-
-  // Test 12: Audit Logging
-  await test('Database: Audit logs record lifecycle events', () => {
-    const testDb = new Database();
-    testDb.logAudit({
-      event: 'item_completed',
-      newValue: { testKey: 'testVal' },
-    });
-    const logs = testDb.getAuditLogs(10);
-    assert(logs.some((l) => l.event === 'item_completed'));
-  });
-
-  // Test 13: Time Saved Model Metrics
-  await test('Metrics: Calculates time savings based on configurable parameters', () => {
-    const testDb = new Database();
-    const metrics = testDb.getMetrics();
-    assert(typeof metrics.estimatedMinutesSaved === 'number');
-    assert(metrics.totalMeetings > 0);
-    const expectedMinutes =
-      metrics.totalMeetings *
-      (metrics.settings.manualMinutesPerMeeting -
-        metrics.settings.automatedMinutesPerMeeting);
-    assert.strictEqual(metrics.estimatedMinutesSaved, expectedMinutes);
+  // Test 11: Settings Schema Validation
+  await test('Settings: Validates time-saved and threshold configuration', () => {
+    const settings = {
+      manualMinutesPerMeeting: 12,
+      automatedMinutesPerMeeting: 2.5,
+      confidenceThreshold: 0.75,
+      aiModel: 'gemini-3.8-flash',
+    };
+    const parsed = settingsSchema.parse(settings);
+    assert.strictEqual(parsed.manualMinutesPerMeeting, 12);
+    assert.strictEqual(parsed.confidenceThreshold, 0.75);
   });
 
   console.log('\n---------------------------------------------');

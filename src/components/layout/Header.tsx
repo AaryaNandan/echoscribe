@@ -9,6 +9,8 @@ import {
   Database,
 } from 'lucide-react';
 
+import { api } from '../../lib/api.ts';
+
 interface HeaderProps {
   title: string;
   subtitle?: string;
@@ -38,13 +40,13 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
-  const downloadCsv = () => {
-    window.location.href = '/api/export/csv';
+  const downloadCsv = async () => {
+    await api.downloadCsv();
     setExportOpen(false);
   };
 
-  const downloadJson = () => {
-    window.location.href = '/api/export/json';
+  const downloadJson = async () => {
+    await api.downloadJson();
     setExportOpen(false);
   };
 

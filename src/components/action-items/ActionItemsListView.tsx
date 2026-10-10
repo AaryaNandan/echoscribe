@@ -149,13 +149,13 @@ export const ActionItemsListView: React.FC<ActionItemsListViewProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href="/api/export/csv"
+          <button
+            onClick={() => api.downloadCsv()}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg shadow-2xs transition"
           >
             <Download className="w-3.5 h-3.5 text-slate-500" />
             <span>Export CSV</span>
-          </a>
+          </button>
         </div>
       </div>
 

@@ -1,8 +1,7 @@
 import { GoogleGenAI, Type } from '@google/genai';
-import { aiExtractionResponseSchema } from '../../lib/validation.ts';
+import { aiExtractionResponseSchema } from '../validation.ts';
 import { ExtractionResult, ExtractedDecision, ExtractedActionItem } from '../../types/index.ts';
 
-// Model definition conforming to gemini-api skill instructions
 const MODEL_NAME = 'gemini-3.8-flash';
 
 export interface ExtractOptions {
@@ -16,16 +15,24 @@ export class MeetingExtractorService {
   private ai: GoogleGenAI | null = null;
 
   constructor() {
-    const apiKey = process.env.GEMINI_API_KEY;
+    // In frontend Vite, environment variables start with VITE_
+    const apiKey =
+      (typeof import.meta !== 'undefined' && import.meta.env && (import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY)) ||
+      (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY);
+
     if (apiKey) {
-      this.ai = new GoogleGenAI({
-        apiKey,
-        httpOptions: {
-          headers: {
-            'User-Agent': 'aistudio-build',
+      try {
+        this.ai = new GoogleGenAI({
+          apiKey,
+          httpOptions: {
+            headers: {
+              'User-Agent': 'aistudio-build',
+            },
           },
-        },
-      });
+        });
+      } catch (e) {
+        console.warn('[MeetingExtractorService] Could not initialize Gemini client:', e);
+      }
     }
   }
 
@@ -41,7 +48,7 @@ export class MeetingExtractorService {
     }
 
     // If Gemini client is available, attempt real AI extraction
-    if (this.ai && process.env.GEMINI_API_KEY) {
+    if (this.ai) {
       try {
         const result = await this.callGeminiModel(
           meetingTitle,
@@ -61,10 +68,6 @@ export class MeetingExtractorService {
           `[MeetingExtractorService] Gemini API call error: ${err.message}. Falling back to deterministic NLP heuristic parser.`
         );
       }
-    } else {
-      console.info(
-        '[MeetingExtractorService] GEMINI_API_KEY not configured. Running deterministic heuristic extractor.'
-      );
     }
 
     // Heuristic parser fallback
