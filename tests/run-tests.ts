@@ -1,5 +1,5 @@
 /**
- * Production Test Suite for Meeting Action Item Tracker (Frontend Architecture)
+ * Production Test Suite for EchoScribe (Frontend Architecture)
  * Covers: Input validation, AI response parsing, NLP heuristic extraction,
  * missing owner/deadline detection, low confidence review flagging,
  * text similarity duplicate detection, and settings validation.
@@ -34,7 +34,7 @@ function test(name: string, fn: () => void | Promise<void>) {
 
 async function runAllTests() {
   console.log('\n=============================================');
-  console.log(' Meeting Action Item Tracker - Test Suite');
+  console.log(' EchoScribe - Test Suite');
   console.log('=============================================\n');
 
   // Test 1: Validation - Happy Path

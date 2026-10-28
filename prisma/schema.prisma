@@ -1,4 +1,4 @@
-// Prisma Schema for Meeting Action Item Tracker
+// Prisma Schema for EchoScribe
 // Production PostgreSQL-compatible architecture
 
 datasource db {

@@ -1,5 +1,5 @@
 {
-  "name": "Meeting Action Item Tracker",
+  "name": "EchoScribe",
   "description": "Production-grade Forward Deployed Engineer workflow application extracting decisions, action items, owners, deadlines, and confidence scores from meetings with audit logging and analytics.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

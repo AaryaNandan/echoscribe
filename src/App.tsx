@@ -165,7 +165,7 @@ export default function App() {
       case 'settings':
         return 'System Settings & Assumptions';
       default:
-        return 'Meeting Action Item Tracker';
+        return 'EchoScribe';
     }
   };
 

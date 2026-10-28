@@ -19,7 +19,7 @@ export const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY,
 });
 
 export const SUPABASE_SQL_SCRIPT = `-- ========================================================
--- Meeting Action Item Tracker - Supabase Database Migration
+-- EchoScribe - Supabase Database Migration
 -- Run this in your Supabase SQL Editor:
 -- https://supabase.com/dashboard/project/${SUPABASE_PROJECT_ID}/sql
 -- ========================================================

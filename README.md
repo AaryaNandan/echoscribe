@@ -1,4 +1,4 @@
-# Meeting Action Item Tracker
+# EchoScribe
 
 > A production-style Forward Deployed Engineer portfolio application that parses unstructured business meeting transcripts into actionable commitments, strategic decisions, assignees, deadlines, and confidence scores with duplicate detection, human review controls, and enterprise audit logging.
 

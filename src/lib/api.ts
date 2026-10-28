@@ -1485,7 +1485,7 @@ export const api = {
     const exportData = {
       exportedAt: new Date().toISOString(),
       metadata: {
-        generator: 'Meeting Action Item Tracker (Frontend Supabase Edition)',
+        generator: 'EchoScribe (Frontend Supabase Edition)',
         version: '2.0.0',
         totalMeetings: meetings.length,
         totalActionItems: items.length,

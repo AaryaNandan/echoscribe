@@ -1,4 +1,4 @@
--- Production PostgreSQL Schema for Meeting Action Item Tracker
+-- Production PostgreSQL Schema for EchoScribe
 -- Run with: psql $DATABASE_URL < schema.sql
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

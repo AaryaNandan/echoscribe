@@ -1,5 +1,5 @@
 -- ========================================================
--- Meeting Action Item Tracker - Supabase Database Migration
+-- EchoScribe - Supabase Database Migration
 -- Project: wkwxbnpwhpfsqltotpsz
 -- Supabase URL: https://wkwxbnpwhpfsqltotpsz.supabase.co
 --

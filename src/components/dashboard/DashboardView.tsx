@@ -61,7 +61,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <span>Forward Deployed Engineer Pipeline</span>
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-white">
-            Meeting Action Item Tracker
+            EchoScribe
           </h2>
           <p className="text-sm text-slate-300 leading-relaxed">
             Automated transcript intelligence powered by Gemini 3.8 Flash. Extracts strategic
