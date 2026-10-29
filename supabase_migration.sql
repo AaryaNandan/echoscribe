@@ -1,11 +1,11 @@
 -- ========================================================
 -- EchoScribe - Supabase Database Migration
--- Project: wkwxbnpwhpfsqltotpsz
--- Supabase URL: https://wkwxbnpwhpfsqltotpsz.supabase.co
+-- Project: chzpmbnixvyppuocjjck
+-- Supabase URL: https://chzpmbnixvyppuocjjck.supabase.co
 --
 -- Instructions:
 -- 1. Open your Supabase Dashboard:
---    https://supabase.com/dashboard/project/wkwxbnpwhpfsqltotpsz/sql
+--    https://supabase.com/dashboard/project/chzpmbnixvyppuocjjck/sql
 -- 2. Click "+ New query"
 -- 3. Paste this script and click "RUN"
 -- ========================================================

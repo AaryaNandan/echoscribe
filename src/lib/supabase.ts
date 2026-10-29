@@ -2,17 +2,17 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 export const SUPABASE_URL =
   (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SUPABASE_URL) ||
-  'https://wkwxbnpwhpfsqltotpsz.supabase.co';
+  'https://chzpmbnixvyppuocjjck.supabase.co';
 
 export const SUPABASE_KEY =
   (typeof import.meta !== 'undefined' &&
     import.meta.env &&
     (import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_KEY)) ||
-  'sb_publishable_hEe2KbvSSg2WO-U8e_dp_w_d_5fURfA';
+  '';
 
 export const SUPABASE_PROJECT_ID =
   (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SUPABASE_PROJECT_ID) ||
-  'wkwxbnpwhpfsqltotpsz';
+  'chzpmbnixvyppuocjjck';
 
 export const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: false },

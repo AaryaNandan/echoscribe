@@ -91,11 +91,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <div className="flex items-center gap-2">
                 <span className="font-bold text-slate-900 text-xs">Supabase Cloud Database Connected</span>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-100 text-emerald-800 font-bold">
-                  Project: wkwxbnpwhpfsqltotpsz
+                  Project: chzpmbnixvyppuocjjck
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 mt-0.5">
-                Targeting https://wkwxbnpwhpfsqltotpsz.supabase.co with live table sync & data persistence.
+                Targeting https://chzpmbnixvyppuocjjck.supabase.co with live table sync & data persistence.
               </p>
             </div>
           </div>

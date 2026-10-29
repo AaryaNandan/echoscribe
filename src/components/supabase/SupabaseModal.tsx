@@ -112,11 +112,11 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
               <div className="flex items-center gap-2">
                 <span className="font-bold text-sm text-white">Supabase Cloud</span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-800">
-                  Project: {status?.projectId || 'wkwxbnpwhpfsqltotpsz'}
+                  Project: {status?.projectId || 'chzpmbnixvyppuocjjck'}
                 </span>
               </div>
               <p className="text-slate-400 text-[11px] font-mono mt-0.5">
-                {status?.url || 'https://wkwxbnpwhpfsqltotpsz.supabase.co'}
+                {status?.url || 'https://chzpmbnixvyppuocjjck.supabase.co'}
               </p>
             </div>
           </div>
@@ -211,7 +211,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
               <li>
                 Open your Supabase project's SQL Editor:{' '}
                 <a
-                  href={`https://supabase.com/dashboard/project/${status?.projectId || 'wkwxbnpwhpfsqltotpsz'}/sql`}
+                  href={`https://supabase.com/dashboard/project/${status?.projectId || 'chzpmbnixvyppuocjjck'}/sql`}
                   target="_blank"
                   rel="noreferrer"
                   className="text-indigo-600 hover:underline font-semibold inline-flex items-center gap-1"

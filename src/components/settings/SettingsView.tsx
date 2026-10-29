@@ -249,7 +249,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 Supabase Cloud PostgreSQL Database
               </h3>
               <p className="text-[11px] text-slate-500 font-mono">
-                Project ID: wkwxbnpwhpfsqltotpsz • Region: Global Cloud
+                Project ID: chzpmbnixvyppuocjjck • Region: Global Cloud
               </p>
             </div>
           </div>
@@ -268,7 +268,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
         <div className="text-xs text-slate-600 space-y-2 leading-relaxed">
           <p>
-            The application is connected to your Supabase PostgreSQL database at <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-[11px]">https://wkwxbnpwhpfsqltotpsz.supabase.co</code>.
+            The application is connected to your Supabase PostgreSQL database at <code className="bg-slate-100 px-1 py-0.5 rounded font-mono text-[11px]">https://chzpmbnixvyppuocjjck.supabase.co</code>.
           </p>
           <div className="p-3 rounded-lg bg-emerald-50/60 border border-emerald-100 flex items-center justify-between">
             <span className="font-semibold text-emerald-900">
