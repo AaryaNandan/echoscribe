@@ -15,7 +15,6 @@ import { AnalyticsView } from './components/analytics/AnalyticsView.tsx';
 import { AuditLogView } from './components/audit/AuditLogView.tsx';
 import { SettingsView } from './components/settings/SettingsView.tsx';
 import { SupabaseModal } from './components/supabase/SupabaseModal.tsx';
-import { RainbowStarCursor } from './components/common/RainbowStarCursor.tsx';
 import { api } from './lib/api.ts';
 import {
   Meeting,
@@ -328,7 +327,6 @@ export default function App() {
       />
 
       {/* Magical Multi-Color Rainbow Star Cursor Trail */}
-      <RainbowStarCursor />
     </div>
   );
 }
